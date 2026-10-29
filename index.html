@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Momentum v6｜冷卻救援器</title>
+<style>
+:root{--p:#6a5af0;--p2:#9b8cff;--bg:#f5f4fb;--card:#ffffffd9;--ink:#171a2e;--muted:#6b7190;--line:#e6e8f2;--ok:#12a46a;--warn:#f0a020;--bad:#d9453b;--side:#12a5c8;--shadow:0 12px 34px #2b2f6a14}
+[data-theme=dark]{--bg:#0e1020;--card:#171a31d9;--ink:#eceefb;--muted:#9aa0c4;--line:#2a2f52;--shadow:0 12px 34px #0007}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;min-height:100vh;overflow-x:hidden;transition:background .4s,color .4s}
+.blob{position:fixed;z-index:0;border-radius:50%;filter:blur(70px);opacity:.38;pointer-events:none;animation:float 18s ease-in-out infinite}.b1{width:380px;height:380px;background:#8f7cff;top:-120px;left:-90px}.b2{width:340px;height:340px;background:#22c3e6;right:-110px;top:220px;animation-delay:-6s}.b3{width:300px;height:300px;background:#ff8fc2;left:30%;bottom:-150px;animation-delay:-11s}
+@keyframes float{50%{transform:translate(40px,-30px) scale(1.12)}}
+.app{position:relative;z-index:1;max-width:1100px;margin:auto;padding:24px 16px 60px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.logo{display:flex;align-items:center;gap:12px}.mark{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--p),#22c3e6);display:grid;place-items:center;color:#fff;font-size:22px;box-shadow:0 8px 22px #6a5af055;animation:pulse 3.2s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.07) rotate(-4deg)}}
+.top h1{margin:0;font-size:24px;letter-spacing:.2px}.top p,.muted{margin:2px 0;color:var(--muted)}.top-r{display:flex;align-items:center;gap:10px}.date{color:var(--muted);font-size:13px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(12,1fr)}.c12{grid-column:span 12}.c8{grid-column:span 8}.c7{grid-column:span 7}.c6{grid-column:span 6}.c5{grid-column:span 5}.c4{grid-column:span 4}
+.card{background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:var(--shadow);animation:rise .6s cubic-bezier(.2,.8,.2,1) both;transition:transform .25s,box-shadow .25s}.card:hover{transform:translateY(-3px)}
+.grid>.card:nth-child(2){animation-delay:.06s}.grid>.card:nth-child(3){animation-delay:.12s}.grid>.card:nth-child(4){animation-delay:.18s}.grid>.card:nth-child(5){animation-delay:.24s}.grid>.card:nth-child(6){animation-delay:.3s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}}
+.head,.row{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.head{align-items:center;margin-bottom:12px}.head h2{margin:0;font-size:17px}
+.eyebrow{margin:0 0 7px;font-size:12px;letter-spacing:.1em;color:var(--p);font-weight:800}.title{font-size:24px;line-height:1.25;margin:0 0 4px}
+.task{position:relative;overflow:hidden;background:linear-gradient(135deg,#6a5af01c,#22c3e61a);border:1px solid #6a5af033;border-radius:16px;margin:16px 0;padding:16px}.task:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,#ffffff44 50%,transparent 65%);transform:translateX(-100%);animation:shine 5s ease-in-out infinite}@keyframes shine{40%,100%{transform:translateX(100%)}}
+.task b{display:block;font-size:18px;margin:5px 0}.task small,.row p{color:var(--muted);font-size:13px}
+.btn{border:0;border-radius:12px;background:#6a5af018;color:var(--ink);padding:10px 14px;font-weight:750;cursor:pointer;transition:transform .15s,box-shadow .2s,filter .2s}.btn:hover{transform:translateY(-2px);filter:brightness(.97)}.btn:active{transform:scale(.96)}
+.primary{background:linear-gradient(135deg,var(--p),#8a79ff);color:#fff;box-shadow:0 8px 20px #6a5af044}.good{background:#12a46a1f;color:var(--ok)}.warn{background:#f0a0201f;color:#b97400}.bad{background:#d9453b1a;color:var(--bad)}.small{font-size:13px;padding:7px 10px;border-radius:10px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.list{display:grid;gap:10px}.item{border:1px solid var(--line);border-radius:14px;padding:13px;background:#ffffff08;animation:rise .4s both;transition:border-color .2s,transform .2s}.item:hover{border-color:var(--p2);transform:translateX(3px)}
+.row b{display:block}.row p{margin:3px 0}.badge{display:inline-block;border-radius:99px;font-weight:800;font-size:11px;padding:2px 8px;margin-right:4px;background:#6a5af022;color:var(--p)}.badge.side{background:#12a5c824;color:var(--side)}.badge.maintain{background:#f0a02024;color:#b97400}.badge.parked{background:#8883;color:var(--muted)}
+.ringwrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.ring{position:relative;width:150px;height:150px;flex:none}.ring svg{transform:rotate(-90deg)}.ring .bg{stroke:#6a5af022}.ring .fg{stroke:url(#g);stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 4px 8px #6a5af066)}.ring .txt{position:absolute;inset:0;display:grid;place-content:center;text-align:center}.ring .txt b{font-size:32px;line-height:1}.ring .txt span{font-size:12px;color:var(--muted)}
+.steps{display:grid;gap:6px;margin-top:10px}.step{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:10px;cursor:pointer;transition:background .2s}.step:hover{background:#6a5af012}.step i{flex:none;width:20px;height:20px;border-radius:7px;border:2px solid var(--p2);display:grid;place-items:center;color:transparent;font-style:normal;font-size:13px;transition:.25s}.step.done i{background:var(--ok);border-color:var(--ok);color:#fff;transform:scale(1.1)}.step.done span{text-decoration:line-through;color:var(--muted)}
+.addstep{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:10px}
+.week{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;height:150px;padding-top:8px}.day{flex:1;text-align:center;font-size:12px;color:var(--muted)}.bar{height:106px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;margin-bottom:6px}.bar div{width:72%;max-width:34px;border-radius:9px 9px 4px 4px;transform-origin:bottom;animation:grow .9s cubic-bezier(.2,.8,.2,1) both}.bar .d{background:linear-gradient(180deg,#8a79ff,var(--p))}.bar .pt{background:linear-gradient(180deg,#ffd27a,var(--warn));margin-bottom:2px}.bar .e{height:6px;background:#8882}
+@keyframes grow{from{transform:scaleY(0)}}
+.today b{color:var(--p)}.bars{display:grid;gap:13px}.pbar{height:10px;border-radius:99px;background:#6a5af018;overflow:hidden}.pbar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--side),#6ee0f5);transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{border:1px solid var(--line);border-radius:14px;padding:11px;text-align:center}.stat b{display:block;font-size:24px}.stat span{font-size:12px;color:var(--muted)}
+.notice{background:#6a5af014;color:var(--p);padding:12px 14px;border-radius:14px;margin-top:12px;font-weight:600}.timer{font-size:42px;font-weight:850;font-variant-numeric:tabular-nums;margin:10px 0;background:linear-gradient(90deg,var(--p),var(--side));-webkit-background-clip:text;background-clip:text;color:transparent}
+.spark{width:100%;height:70px}.spark polyline{fill:none;stroke:var(--p);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:600;stroke-dashoffset:600;animation:draw 1.6s .2s forwards}@keyframes draw{to{stroke-dashoffset:0}}
+input,textarea,select{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px;font:inherit;background:#fff9;color:var(--ink)}[data-theme=dark] input,[data-theme=dark] textarea,[data-theme=dark] select{background:#0004}textarea{min-height:70px;resize:vertical}.inline{display:grid;grid-template-columns:1fr auto;gap:8px}.empty{color:var(--muted)}
+.backdrop{position:fixed;inset:0;z-index:30;background:#0d1030aa;backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;padding:16px;animation:fade .2s}.backdrop[hidden]{display:none!important}@keyframes fade{from{opacity:0}}
+.modal{position:relative;width:min(560px,100%);max-height:92vh;overflow:auto;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 25px 70px #0006;animation:pop .35s cubic-bezier(.2,1.3,.4,1)}@keyframes pop{from{opacity:0;transform:scale(.9) translateY(16px)}}.modal h2{margin:0 0 4px}.modal label{display:block;font-size:13px;font-weight:800;margin:13px 0 5px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.close{position:absolute;right:13px;top:12px;width:34px;height:34px;border:0;border-radius:10px;background:#8882;font-size:22px;cursor:pointer;color:var(--ink);transition:.2s}.close:hover{background:var(--bad);color:#fff;transform:rotate(90deg)}
+.help{display:inline-grid;place-items:center;width:20px;height:20px;vertical-align:middle;border:1px solid var(--p2);border-radius:50%;background:#6a5af018;color:var(--p);font-size:12px;font-weight:850;cursor:pointer;padding:0;transition:.2s}.help:hover{background:var(--p);color:#fff;transform:scale(1.15)}
+.help-pop{position:fixed;z-index:100;display:none;width:min(330px,calc(100vw - 28px));background:#25205a;color:#fff;border-radius:14px;padding:14px 38px 14px 15px;box-shadow:0 14px 34px #0005;font-size:14px}.help-pop.show{display:block;animation:pop .25s}.help-pop button{position:absolute;right:8px;top:6px;border:0;background:none;color:#fff;font-size:21px;cursor:pointer}
+.toast{position:fixed;z-index:120;bottom:20px;left:50%;transform:translate(-50%,30px);opacity:0;pointer-events:none;background:#171a2e;color:#fff;padding:11px 16px;border-radius:12px;transition:.3s;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+.confetti{position:fixed;z-index:200;width:9px;height:14px;pointer-events:none;border-radius:2px;animation:conf 1.1s ease-out forwards}@keyframes conf{to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
+.theme{border:1px solid var(--line);background:var(--card);border-radius:12px;width:40px;height:40px;cursor:pointer;font-size:18px}
+@media(max-width:860px){.c8,.c7,.c6,.c5,.c4{grid-column:span 12}.top{align-items:flex-start}.row{flex-direction:column}.inline,.addstep{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head>
+<body><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<main class="app">
+<header class="top"><div class="logo"><div class="mark">⚡</div><div><h1>Momentum <button class="help" data-act="help" data-help="這個工具不是一般待辦清單。它幫你在熱情下降時，仍然推進一個很小的下一步，並用儀表板看見整體進度。">i</button></h1><p>冷卻時，仍然推進一小步。</p></div></div><div class="top-r"><span class="date" id="date"></span><button class="theme" data-act="theme" title="切換深色／淺色">🌓</button></div></header>
+<div class="grid">
+<section class="card c7" id="focus"></section>
+<section class="card c5"><div class="head"><h2>本週動能 <button class="help" data-act="help" data-help="只統計本週的最小步記錄。重點不是連續打卡，而是停下後能回到主線。">i</button></h2><button class="btn small" data-act="review">每週回顧</button></div><div class="stats"><div class="stat"><b id="doneN">0</b><span>完成最小步</span></div><div class="stat"><b id="returnN">0</b><span>冷卻後回歸</span></div><div class="stat"><b id="streakN">0</b><span>連續天數</span></div></div><div class="notice" id="notice"></div><div style="margin-top:14px"><div class="muted" style="font-size:12px">近期成就感趨勢（0–5）</div><svg class="spark" id="spark" viewBox="0 0 300 70" preserveAspectRatio="none"></svg></div></section>
+<section class="card c4"><div class="head"><h2>主線進度 <button class="help" data-act="help" data-help="進度環根據主線的「里程碑」完成比例計算。在主線卡片勾選里程碑，圓環會即時更新。">i</button></h2></div><div class="ringwrap"><div class="ring"><svg width="150" height="150" viewBox="0 0 150 150"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6a5af0"/><stop offset="1" stop-color="#22c3e6"/></linearGradient></defs><circle class="bg" cx="75" cy="75" r="62" fill="none" stroke-width="14"/><circle class="fg" id="fg" cx="75" cy="75" r="62" fill="none" stroke-width="14" stroke-dasharray="389.6" stroke-dashoffset="389.6"/></svg><div class="txt"><b id="pct">0%</b><span id="pctSub">未設主線</span></div></div><div style="flex:1;min-width:150px"><b id="ringName">尚未設定主線</b><p class="muted" id="ringMeta">建立主線並加入里程碑，這裡會顯示進度。</p></div></div></section>
+<section class="card c4"><div class="head"><h2>近 7 日推進 <button class="help" data-act="help" data-help="深紫色代表「完成」，橙色代表「部分完成」。看哪幾天最容易推進。">i</button></h2></div><div class="week" id="week"></div></section>
+<section class="card c4"><div class="head"><h2>副線進度 <button class="help" data-act="help" data-help="副線的重要性低於主線：有空時才推進，不應搶走主線時間。建議最多同時 3 條。">i</button></h2></div><div class="bars" id="sideBars"></div></section>
+<section class="card c12"><div class="head"><h2>專案 <button class="help" data-act="help" data-help="主線：本週最重要，每天推進。副線：次要，有空才做。維護：只做必要工作。孵化／停車場：暫不開發，只記錄或小量驗證。">i</button></h2><button class="btn primary small" data-act="new">＋ 新專案</button></div><div class="list" id="projects"></div></section>
+<section class="card c6"><div class="head"><h2>靈感停車場 <button class="help" data-act="help" data-help="新點子先放這裡，不要立即開始。每週回顧時才挑一個變成專案。">i</button></h2><span class="muted">先記下，不開工</span></div><form class="inline" id="ideaForm"><input id="ideaText" required maxlength="120" placeholder="例如：做一個 WhatsApp HR bot"><button class="btn primary">停好</button></form><div class="list" id="ideas" style="margin-top:12px"></div></section>
+<section class="card c6"><div class="head"><h2>資料 <button class="help" data-act="help" data-help="資料只存在這個瀏覽器。請定期匯出備份；換裝置時可匯入。舊版（v3–v5）資料會自動轉入。">i</button></h2></div><p class="muted">資料只存在這部裝置的瀏覽器。</p><div class="actions"><button class="btn small" data-act="export">匯出備份</button><label class="btn small">匯入備份<input id="import" type="file" accept="application/json" hidden></label><button class="btn small bad" data-act="wipe">清除全部</button></div></section>
+</div></main>
+
+<div class="backdrop" id="projectModal" hidden><form class="modal" id="projectForm"><button type="button" class="close" data-act="close">×</button><h2 id="modalTitle">建立專案</h2><p class="muted">主線只有 1 個；副線重要性較低。</p>
+<label>專案名稱 <button type="button" class="help" data-act="help" data-help="用可辨認的成果名稱，例如「完成 SEO/GEO Audit MVP」。">i</button></label><input id="pName" required maxlength="80">
+<label>今天的最小一步 <button type="button" class="help" data-act="help" data-help="只寫一個 5–30 分鐘可完成的動作。">i</button></label><textarea id="pTask" required maxlength="200"></textarea>
+<label>里程碑（每行一項，選填） <button type="button" class="help" data-act="help" data-help="把專案拆成 3–8 個可交付成果，例如「完成輸入頁」「完成結果頁」。完成比例會顯示在儀表板。">i</button></label><textarea id="pSteps" placeholder="例如：&#10;設計輸入頁&#10;完成評分邏輯&#10;部署測試版"></textarea>
+<label>預估時間</label><select id="pMins"><option value="5">5 分鐘</option><option value="15" selected>15 分鐘</option><option value="25">25 分鐘</option><option value="30">30 分鐘</option></select>
+<label>狀態 <button type="button" class="help" data-act="help" data-help="主線：最重要。副線：次要。維護：只做必要事項。孵化：暫不開發。">i</button></label><select id="pStatus"><option value="focus">主線（最重要）</option><option value="side">副線（次要）</option><option value="maintain">維護</option><option value="parked">孵化／停車場</option></select>
+<div class="modal-actions"><button type="button" class="btn" data-act="close">取消</button><button class="btn primary">儲存</button></div></form></div>
+<div class="backdrop" id="logModal" hidden><div class="modal"><button type="button" class="close" data-act="close">×</button><h2>完成後，留一個記錄 <button class="help" data-act="help" data-help="完成：做完最小步。部分完成：有做但未完成。跳過：今天沒做；不會懲罰你，明天回來即可。">i</button></h2><p class="muted">不是打分，而是找出甚麼狀態最容易推進。</p><div class="actions"><button class="btn good" data-act="log" data-s="done">完成</button><button class="btn warn" data-act="log" data-s="partial">部分完成</button><button class="btn" data-act="log" data-s="skip">今天跳過</button></div><label style="display:block;margin-top:14px;font-weight:800;font-size:13px">現在的成就感（0–5）</label><select id="mood"><option value="0">0 — 沒感覺</option><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5 — 很有成就感</option></select></div></div>
+<div class="backdrop" id="reviewModal" hidden><div class="modal"><button type="button" class="close" data-act="close">×</button><h2>本週回顧</h2><div id="reviewBody"></div><div class="modal-actions"><button class="btn primary" data-act="close">完成</button></div></div></div>
+<div class="help-pop" id="helpPop"><button data-act="helpclose">×</button><span id="helpText"></span></div><div class="toast" id="toast"></div>
+
+<script>
+const K='momentum-v6',OLD=['momentum-v5','momentum-v4','momentum-v3'],base={projects:[],ideas:[],logs:[],timer:null,theme:'light'};
+let data=load(),tickId,firstRender=true;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],uid=()=>(crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random()));
+function load(){let raw=localStorage.getItem(K);if(!raw)for(const k of OLD){raw=localStorage.getItem(k);if(raw)break}try{return norm({...base,...JSON.parse(raw||'{}')})}catch{return norm({...base})}}
+function norm(d){d.projects=(d.projects||[]).map(p=>({steps:[],mins:15,...p,steps:p.steps||[],status:p.status||'parked'}));d.ideas=d.ideas||[];d.logs=d.logs||[];return d}
+function save(){localStorage.setItem(K,JSON.stringify(data));render()}
+const esc=s=>{let x=document.createElement('span');x.textContent=s??'';return x.innerHTML};
+const focus=()=>data.projects.find(p=>p.status==='focus');
+const pctOf=p=>p&&p.steps.length?Math.round(p.steps.filter(s=>s.done).length/p.steps.length*100):null;
+const LBL={focus:'主線',side:'副線',maintain:'維護',parked:'孵化'};
+function toast(s){const t=$('#toast');t.textContent=s;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2600)}
+const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+const dkey=t=>{const d=new Date(t);return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()};
+function weekLogs(){const x=new Date();x.setHours(0,0,0,0);x.setDate(x.getDate()-((x.getDay()+6)%7));return data.logs.filter(l=>l.at>=+x)}
+function burst(el){const r=(el||document.body).getBoundingClientRect?.(),cx=r?r.left+r.width/2:innerWidth/2,cy=r?r.top+r.height/2:innerHeight/2,cols=['#6a5af0','#22c3e6','#ff8fc2','#ffd27a','#12a46a'];for(let i=0;i<26;i++){const c=document.createElement('i');c.className='confetti';c.style.left=cx+'px';c.style.top=cy+'px';c.style.background=cols[i%5];c.style.setProperty('--x',(Math.random()-.5)*340+'px');c.style.setProperty('--y',(Math.random()*-220-30)+'px');c.style.setProperty('--r',Math.random()*720+'deg');document.body.appendChild(c);setTimeout(()=>c.remove(),1200)}}
+function countTo(el,to,suffix=''){const from=parseInt(el.dataset.v||'0');el.dataset.v=to;const t0=performance.now(),dur=900;(function f(t){const k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,3);el.textContent=Math.round(from+(to-from)*e)+suffix;if(k<1)requestAnimationFrame(f)})(t0)}
+
+function stepsHtml(p){if(!p)return'';return `<div class="steps">${p.steps.map(s=>`<div class="step ${s.done?'done':''}" data-act="step" data-p="${p.id}" data-s="${s.id}"><i>✓</i><span>${esc(s.text)}</span></div>`).join('')||'<span class="muted">尚未設定里程碑。</span>'}</div><form class="addstep" data-addstep="${p.id}"><input placeholder="新增里程碑…" maxlength="80" required><button class="btn small">加入</button></form>`}
+
+function renderFocus(){const p=focus(),box=$('#focus');
+ if(!p){box.innerHTML='<p class="eyebrow">今天的主線</p><h2 class="title">先選一個值得推進的項目</h2><p class="muted">本週只保留一個主線；次要的放副線，新想法放停車場。</p><button class="btn primary" data-act="new">建立本週主線</button>';return}
+ const t=data.timer?.projectId===p.id?data.timer:null;
+ box.innerHTML=`<p class="eyebrow">本週主線 <button class="help" data-act="help" data-help="本週唯一每天推進的項目。今天只需完成下面一小步，不必完成整個專案。">i</button></p><h2 class="title">${esc(p.name)}</h2>
+ <div class="task"><span class="badge">今天只做這一步</span><b>${esc(p.task)}</b><small>預估 ${p.mins} 分鐘 · 做完此動作即可</small></div>
+ ${t?`<div class="timer" id="clock">${fmt(t.left)}</div><div class="actions"><button class="btn primary" data-act="pause">${t.run?'暫停':'繼續'}</button><button class="btn" data-act="endtimer">結束並記錄</button></div>`:`<div class="actions"><button class="btn primary" data-act="start">▶ 開始 ${p.mins} 分鐘</button><button class="btn" data-act="small">改成 5 分鐘版本</button><button class="btn good" data-act="openlog">我已經做了</button></div>`}
+ <div style="margin-top:16px"><b style="font-size:14px">里程碑</b>${stepsHtml(p)}</div>`}
+
+function renderDash(){const p=focus(),pc=pctOf(p),C=389.6;
+ $('#ringName').textContent=p?p.name:'尚未設定主線';
+ $('#ringMeta').textContent=p?(p.steps.length?`已完成 ${p.steps.filter(s=>s.done).length} / ${p.steps.length} 個里程碑`:'為主線加入里程碑，才能計算進度。'):'建立主線並加入里程碑，這裡會顯示進度。';
+ $('#pctSub').textContent=p?(pc==null?'未設里程碑':'完成度'):'未設主線';
+ countTo($('#pct'),pc||0,'%');
+ requestAnimationFrame(()=>{$('#fg').style.strokeDashoffset=C*(1-(pc||0)/100)});
+ // week
+ const days=[],names=['日','一','二','三','四','五','六'];for(let i=6;i>=0;i--){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-i);days.push(d)}
+ $('#week').innerHTML=days.map((d,i)=>{const L=data.logs.filter(l=>dkey(l.at)===dkey(d)),dn=L.filter(l=>l.status==='done').length,pt=L.filter(l=>l.status==='partial').length,u=100/3;
+  const inner=(dn||pt)?`${pt?`<div class="pt" style="height:${Math.min(60,pt*u)}px;animation-delay:${i*.07}s"></div>`:''}${dn?`<div class="d" style="height:${Math.min(100,dn*u)}px;animation-delay:${i*.07}s"></div>`:''}`:'<div class="e"></div>';
+  return `<div class="day"><div class="bar">${inner}</div>${names[d.getDay()]}</div>`}).join('');
+ // side
+ const sides=data.projects.filter(x=>x.status==='side');
+ $('#sideBars').innerHTML=sides.length?sides.map(s=>{const c=pctOf(s);return `<div><div class="row" style="align-items:center"><b style="font-size:14px">${esc(s.name)}</b><span class="muted">${c==null?'未設里程碑':c+'%'}</span></div><div class="pbar"><i data-w="${c||0}"></i></div></div>`}).join(''):'<p class="empty">還沒有副線。次要但值得保持的專案可放這裡。</p>';
+ requestAnimationFrame(()=>$$('#sideBars i').forEach(i=>i.style.width=i.dataset.w+'%'));
+ // spark
+ const m=data.logs.filter(l=>l.status!=='skip').slice(-14).map(l=>l.mood);
+ $('#spark').innerHTML=m.length>1?`<polyline points="${m.map((v,i)=>`${(i/(m.length-1))*290+5},${62-(v/5)*54}`).join(' ')}"/>`:'<text x="8" y="40" fill="#8a8fb0" font-size="13">累積至少 2 筆記錄後顯示</text>';
+}
+function renderStats(){const w=weekLogs(),n=w.filter(l=>l.status==='done').length;countTo($('#doneN'),n);
+ countTo($('#returnN'),data.logs.filter((l,i,a)=>i&&l.status!=='skip'&&a[i-1].status==='skip').length);
+ let st=0;const set=new Set(data.logs.filter(l=>l.status!=='skip').map(l=>dkey(l.at)));const d=new Date();if(!set.has(dkey(d)))d.setDate(d.getDate()-1);while(set.has(dkey(d))){st++;d.setDate(d.getDate()-1)}countTo($('#streakN'),st);
+ const p=focus(),last=p?data.logs.filter(l=>l.projectId===p.id&&l.status!=='skip').sort((a,b)=>b.at-a.at)[0]:null,days=last?Math.floor((Date.now()-last.at)/864e5):0;
+ $('#notice').textContent=!p?'先選一個主線，讓今天有清楚的下一步。':days>=2?`主線已 ${days} 天沒推進。按「改成 5 分鐘版本」，不用追回進度。`:'低動力時，把任務縮到 5 分鐘即可。'}
+function renderProjects(){const x=$('#projects');if(!data.projects.length){x.innerHTML='<p class="empty">還沒有專案。</p>';return}
+ const order={focus:0,side:1,maintain:2,parked:3};
+ x.innerHTML=[...data.projects].sort((a,b)=>order[a.status]-order[b.status]).map(p=>{const c=pctOf(p);return `<div class="item"><div class="row"><div style="flex:1"><span class="badge ${p.status}">${LBL[p.status]}</span><b>${esc(p.name)}</b><p>下一步：${esc(p.task)} · ${p.mins} 分鐘${c!=null?` · 進度 ${c}%`:''}</p></div><div class="actions"><select data-statusfor="${p.id}" style="width:auto;padding:6px 8px"><option value="focus"${p.status==='focus'?' selected':''}>主線</option><option value="side"${p.status==='side'?' selected':''}>副線</option><option value="maintain"${p.status==='maintain'?' selected':''}>維護</option><option value="parked"${p.status==='parked'?' selected':''}>孵化</option></select><button class="btn small" data-act="edit" data-id="${p.id}">編輯</button><button class="btn small bad" data-act="del" data-id="${p.id}">刪除</button></div></div></div>`}).join('')}
+function renderIdeas(){$('#ideas').innerHTML=data.ideas.length?data.ideas.map(i=>`<div class="item"><div class="row" style="align-items:center"><b>${esc(i.text)}</b><div class="actions"><button class="btn small" data-act="useidea" data-id="${i.id}">變成專案</button><button class="btn small bad" data-act="rmidea" data-id="${i.id}">×</button></div></div></div>`).join(''):'<p class="empty">新點子放這裡，今天不用處理。</p>'}
+function render(){document.documentElement.dataset.theme=data.theme||'light';$('#date').textContent=new Intl.DateTimeFormat('zh-Hant-HK',{dateStyle:'full'}).format(new Date());renderFocus();renderDash();renderStats();renderProjects();renderIdeas();if(data.timer?.run)startTick()}
+
+function setStatus(id,status){const p=data.projects.find(x=>x.id===id);if(!p)return;
+ if(status==='focus')data.projects.forEach(o=>{if(o.id!==id&&o.status==='focus')o.status=data.projects.filter(z=>z.status==='side').length<3?'side':'parked'});
+ if(status==='side'&&p.status!=='side'&&data.projects.filter(z=>z.status==='side').length>=3){toast('副線最多 3 條，請先整理其中一條。');render();return}
+ p.status=status;save();toast('已設為'+LBL[status])}
+function openProject(p=null,idea=''){const f=$('#projectForm');f.reset();f.dataset.id=p?.id||'';$('#modalTitle').textContent=p?'編輯專案':'建立專案';$('#pName').value=p?.name||idea;$('#pTask').value=p?.task||'定義這個想法的第一個 15 分鐘驗證步驟';$('#pSteps').value=(p?.steps||[]).map(s=>s.text).join('\n');$('#pMins').value=p?.mins||15;$('#pStatus').value=p?.status||(focus()?'side':'focus');$('#projectModal').hidden=false}
+$('#projectForm').addEventListener('submit',e=>{e.preventDefault();const oid=e.currentTarget.dataset.id,old=data.projects.find(p=>p.id===oid),status=$('#pStatus').value;
+ const lines=$('#pSteps').value.split('\n').map(s=>s.trim()).filter(Boolean),steps=lines.map(t=>old?.steps.find(s=>s.text===t)||{id:uid(),text:t,done:false});
+ const o={id:oid||uid(),name:$('#pName').value.trim(),task:$('#pTask').value.trim(),mins:+$('#pMins').value,status:old?old.status:'parked',steps,created:old?.created||Date.now()};
+ if(oid)data.projects=data.projects.map(p=>p.id===oid?o:p);else data.projects.push(o);
+ data.ideas=data.ideas.filter(i=>i.text!==o.name);
+ $('#projectModal').hidden=true;
+ if(status!==o.status){const keep=data.projects;setStatus(o.id,status);return}
+ save();toast('已儲存並關閉視窗')});
+
+function startTick(){clearInterval(tickId);tickId=setInterval(()=>{const t=data.timer;if(!t||!t.run)return clearInterval(tickId);const g=Math.floor((Date.now()-t.last)/1000);if(g){t.left=Math.max(0,t.left-g);t.last=Date.now();const c=$('#clock');if(c)c.textContent=fmt(t.left);if(!t.left){t.run=false;clearInterval(tickId);save();$('#logModal').hidden=false;toast('時間到！記錄一下這次進度吧。')}}},500)}
+function closeAll(){$$('.backdrop').forEach(x=>x.hidden=true)}
+function showHelp(b){const p=$('#helpPop');$('#helpText').textContent=b.dataset.help;p.classList.add('show');const r=b.getBoundingClientRect();let l=Math.min(Math.max(14,r.left),innerWidth-p.offsetWidth-14),t=r.bottom+10;if(t+p.offsetHeight>innerHeight-12)t=Math.max(12,r.top-p.offsetHeight-10);p.style.left=l+'px';p.style.top=t+'px'}
+
+document.addEventListener('click',e=>{const el=e.target.closest('[data-act]');
+ if(!el){if(!e.target.closest('#helpPop'))$('#helpPop').classList.remove('show');if(e.target.classList.contains('backdrop'))e.target.hidden=true;return}
+ const a=el.dataset.act;
+ if(a==='help'){e.preventDefault();e.stopPropagation();showHelp(el);return}
+ if(!el.closest('#helpPop'))$('#helpPop').classList.remove('show');
+ const p=focus();
+ switch(a){
+  case'helpclose':$('#helpPop').classList.remove('show');break;
+  case'theme':data.theme=data.theme==='dark'?'light':'dark';save();break;
+  case'new':openProject();break;
+  case'close':closeAll();break;
+  case'edit':openProject(data.projects.find(x=>x.id===el.dataset.id));break;
+  case'del':if(confirm('確定刪除這個專案？')){data.projects=data.projects.filter(x=>x.id!==el.dataset.id);save()}break;
+  case'useidea':openProject(null,data.ideas.find(i=>i.id===el.dataset.id).text);break;
+  case'rmidea':data.ideas=data.ideas.filter(i=>i.id!==el.dataset.id);save();break;
+  case'start':if(p){data.timer={projectId:p.id,left:p.mins*60,run:true,last:Date.now()};save()}break;
+  case'pause':data.timer.run=!data.timer.run;data.timer.last=Date.now();save();break;
+  case'endtimer':data.timer=null;clearInterval(tickId);save();$('#logModal').hidden=false;break;
+  case'small':if(p){p.task='只打開相關檔案，寫下一句「下一個可交付成果是＿＿＿」。';p.mins=5;save();toast('已改成 5 分鐘版本')}break;
+  case'openlog':$('#logModal').hidden=false;break;
+  case'log':if(p){data.logs.push({id:uid(),projectId:p.id,status:el.dataset.s,mood:+$('#mood').value,at:Date.now()});data.timer=null;clearInterval(tickId);closeAll();save();if(el.dataset.s==='done'){burst(el);toast('做得好！今天可以停在這裡 🎉')}else toast('已記錄')}break;
+  case'step':{const pr=data.projects.find(x=>x.id===el.dataset.p),s=pr?.steps.find(x=>x.id===el.dataset.s);if(s){s.done=!s.done;save();if(s.done){burst(el);if(pr.steps.every(z=>z.done))toast('🎊 「'+pr.name+'」所有里程碑已完成！')}}break}
+  case'review':{const w=weekLogs(),d=w.filter(x=>x.status==='done').length,pt=w.filter(x=>x.status==='partial').length,sk=w.filter(x=>x.status==='skip').length;$('#reviewBody').innerHTML=`<p><b>本週：</b>完成 ${d} 次、部分完成 ${pt} 次、跳過 ${sk} 次。</p><div class="notice">下週只做一個調整：跳過較多就把任務縮到 5 分鐘；穩定完成就保持節奏。也可從停車場挑 1 個點子升級。</div>`;$('#reviewModal').hidden=false;break}
+  case'export':{const x=document.createElement('a');x.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));x.download='momentum-backup.json';x.click();break}
+  case'wipe':if(confirm('確定清除所有資料？此操作不能復原。')){data={...base,projects:[],ideas:[],logs:[]};save()}break;
+ }},true);
+document.addEventListener('change',e=>{const s=e.target.closest('[data-statusfor]');if(s)setStatus(s.dataset.statusfor,s.value)});
+document.addEventListener('submit',e=>{const f=e.target.closest('[data-addstep]');if(f){e.preventDefault();const p=data.projects.find(x=>x.id===f.dataset.addstep),v=f.querySelector('input').value.trim();if(p&&v){p.steps.push({id:uid(),text:v,done:false});save()}}});
+$('#ideaForm').onsubmit=e=>{e.preventDefault();data.ideas.unshift({id:uid(),text:$('#ideaText').value.trim(),at:Date.now()});$('#ideaText').value='';save();toast('已放進停車場')};
+$('#import').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{data=norm({...base,...JSON.parse(r.result)});save();toast('匯入完成')}catch{alert('備份檔無效')}};r.readAsText(f)};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeAll();$('#helpPop').classList.remove('show')}});
+render();
+</script></body></html>
